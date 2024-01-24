@@ -7,10 +7,10 @@ jobs:
 
     steps:
       - name: Get code to the runner
-        use: actions.checkout@v3
+        uses: actions.checkout@v3
 
       - name: Install Node jobs
-        use: checkout/setup-node@v3
+        uses: checkout/setup-node@v3
         with:
           node-version: 18
 
