@@ -45,13 +45,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build app
-      - run: npm run build
+        run: npm run build
 
       - name: deploy
         run: echo "Deploying...."
 
       - name: Save artifact/build folder
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v3
         with:
           name: dist-backup
           # path: .next
