@@ -1,5 +1,8 @@
 name: Test workflow
-on: push
+# on: [push, workflow_dispatch ]
+on:
+  push: [main]
+  workflow_dispatch
 
 jobs:
   my-tests:
@@ -19,6 +22,7 @@ jobs:
 
       # - name: Run test
       #   run: npm run test
+
   deploy:
     #This will ensure the job runs after test, instead of parallel
     needs: [my-tests]
