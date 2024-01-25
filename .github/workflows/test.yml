@@ -2,6 +2,10 @@ name: Test workflow
 # on: [push, workflow_dispatch]
 on:
   push:
+    branches:
+      - main
+      - "dev-*" # dev-group, dev-tester-2024 etc
+      - "feat/**" # feat/new, feat/new/chat-box etc
   workflow_dispatch:
 
 jobs:
@@ -40,6 +44,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      - name: deploy
+      - name: Build app
+      - run: npm run build
 
+      - name: deploy
         run: echo "Deploying...."
+
+      - name: Save artifact/build folder
+        uses: actions/upload-artifact
+        with:
+          name: dist-backup
+          # path: .next
+          path: |
+            .next
+            README.md
